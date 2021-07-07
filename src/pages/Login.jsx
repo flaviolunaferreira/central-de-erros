@@ -28,8 +28,11 @@ export default function Login() {
             <Input type="password" />
           </FormControl>
 
-          <Button>
+          <Button mt={5} mr={5} >
             <LinkButton title="Login" route="/centralerrors"/>
+          </Button>
+          <Button mt={5}>
+            <LinkButton title="Sign In" route="/register"/>
           </Button>
         </form>
         
