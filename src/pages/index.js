@@ -4,3 +4,4 @@ export { default as AboutUs } from "./AboutUs";
 export { default as Comments } from "./Comments";
 export { default as Login } from "./Login";
 export { default as CentralErrors } from "./CentralErrors";
+export { default as Register } from "./Register";
