@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { 
-  Home, Comments, AboutUs, AboutProject, Login, CentralErrors
+  Home, Comments, AboutUs, AboutProject, Login, CentralErrors, Register
  } from "./pages";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route path="/aboutproject" component={AboutProject}/>
           <Route path="/login" component={Login}/>
           <Route path="/centralerrors" component={CentralErrors}/>
+          <Route path="/register" component={Register}/>
         </ChakraProvider>
       </Switch>
     </BrowserRouter>
