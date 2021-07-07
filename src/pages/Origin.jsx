@@ -2,11 +2,11 @@ import React from 'react'
 import { CentralErrorsSideBar } from '../components/CentralErrorsSideBar'
 import Header from '../components/Header'
 
-export default function CentralErrors() {
+export default function Origin() {
   return (
     <div>
       <Header title="Perfil" />
-      CentralErrors
+      Busca por origem
       <CentralErrorsSideBar />
     </div>
   )
