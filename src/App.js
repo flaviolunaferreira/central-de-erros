@@ -13,6 +13,7 @@ import {
   Level,
   Custom,
   Description,
+  Register
 } from './pages';
 import './App.css';
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/aboutproject" component={AboutProject} />
           <Route path="/login" component={Login} />
+          <Route path="/register" component={Register}/>
 
           <Route path="/centralerrors" component={CentralErrors} />
           <Route path="/date" component={SearchDate} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   FormControl,
   FormLabel,
@@ -6,18 +6,23 @@ import {
   FormHelperText,
   Input,
   Button,
-  Container
+  Container,
 } from "@chakra-ui/react";
-import { MenuSideBar } from '../components/MenuSideBar';
-import LinkButton from '../components/LinkButton';
+import { MenuSideBar } from "../components/MenuSideBar";
+import LinkButton from "../components/LinkButton";
 
-export default function Login() {
+const Register = () => {
   return (
     <div>
       <MenuSideBar />
 
       <Container>
         <form>
+          <FormControl id="name">
+            <FormLabel>Nome</FormLabel>
+            <Input type="name" />
+          </FormControl>
+
           <FormControl id="user">
             <FormLabel>Usuário</FormLabel>
             <Input type="user" />
@@ -28,15 +33,13 @@ export default function Login() {
             <Input type="password" />
           </FormControl>
 
-          <Button mt={5} mr={5} >
-            <LinkButton title="Login" route="/centralerrors"/>
-          </Button>
           <Button mt={5}>
-            <LinkButton title="Sign In" route="/register"/>
+            <LinkButton title="Login" route="/login" />
           </Button>
         </form>
-        
       </Container>
     </div>
-  )
-}
+  );
+};
+
+export default Register;
