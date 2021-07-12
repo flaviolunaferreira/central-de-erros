@@ -14,6 +14,7 @@ import {
   Custom,
   Description,
 } from './pages';
+import './App.css';
 
 function App() {
   return (
