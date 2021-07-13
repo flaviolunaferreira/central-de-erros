@@ -7,6 +7,8 @@ import Maven from '../images/mavenLogo.svg';
 import Oauth from '../images/oauthLogo.svg';
 import Mysql from '../images/mysqlLogo.svg';
 
+// colocar tecnologias do front!!!
+
 export default function AboutProject() {
   return (
     <div>
