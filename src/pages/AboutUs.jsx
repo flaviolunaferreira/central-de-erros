@@ -3,6 +3,7 @@ import React from 'react';
 import AboutPerson from '../components/AboutPerson';
 import Header from '../components/Header';
 import DanielePerse from '../images/DanielePerse.jpeg';
+import JorgeOsiro from '../images/JorgeOsiro.jpeg';
 import JosiasViveiro from '../images/JosiasViveiro.jpg';
 
 export default function AboutUs() {
@@ -16,12 +17,20 @@ export default function AboutUs() {
           link="https://www.linkedin.com/in/daniele-perse/"
           src={DanielePerse}
         />
-        <AboutPerson name="Pessoa Um" src="" link="" />
-        <AboutPerson name="Pessoa Dois" src="" link="" />
+        <AboutPerson
+          name="Flavio Luna Ferreira"
+          src=""
+          link="https://www.linkedin.com/in/flavio-luna-ferreira-9b4812165/"
+        />
+        <AboutPerson name="Daniel Moura" src="" link="https://www.linkedin.com/in/darthurmoura/" />
       </Flex>
 
       <Flex direction="row" wrap="wrap" justify="space-around" padding="20px">
-        <AboutPerson name="Pessoa Três" src="" link="" />
+        <AboutPerson
+          name="Jorge Osiro"
+          src={JorgeOsiro}
+          link="https://www.linkedin.com/in/jorge-osiro/"
+        />
         <AboutPerson
           name="Josias Danny de Viveiro"
           src={JosiasViveiro}
