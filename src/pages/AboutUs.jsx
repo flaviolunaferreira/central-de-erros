@@ -2,6 +2,8 @@ import { Flex } from '@chakra-ui/react';
 import React from 'react';
 import AboutPerson from '../components/AboutPerson';
 import Header from '../components/Header';
+import Coyote from '../images/Coyote.png';
+import DanielMoura from '../images/DanielMoura.png';
 import DanielePerse from '../images/DanielePerse.jpeg';
 import JorgeOsiro from '../images/JorgeOsiro.jpeg';
 import JosiasViveiro from '../images/JosiasViveiro.jpg';
@@ -19,10 +21,14 @@ export default function AboutUs() {
         />
         <AboutPerson
           name="Flavio Luna Ferreira"
-          src=""
+          src={Coyote}
           link="https://www.linkedin.com/in/flavio-luna-ferreira-9b4812165/"
         />
-        <AboutPerson name="Daniel Moura" src="" link="https://www.linkedin.com/in/darthurmoura/" />
+        <AboutPerson
+          name="Daniel Moura"
+          src={DanielMoura}
+          link="https://www.linkedin.com/in/darthurmoura/"
+        />
       </Flex>
 
       <Flex direction="row" wrap="wrap" justify="space-around" padding="20px">
