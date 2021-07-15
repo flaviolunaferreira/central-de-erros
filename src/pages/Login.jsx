@@ -20,12 +20,12 @@ export default function Login() {
   const history = useHistory();
   
   const handleLogin = () => {
-    // if (userName === '' || password === '') {
-    //   setMessage('preencha todos os campos');
-    // } else {
-      // api.loginUser(userName, password).then(()=> 
-      history.push("/centralerrors");
-    // }
+    if (userName === '' || password === '') {
+      setMessage('preencha todos os campos');
+    } else {
+      api.loginUser(userName, password).then(()=> 
+      history.push("/centralerrors"))
+    }
   }
 
   return (
