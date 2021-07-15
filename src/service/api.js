@@ -8,8 +8,19 @@ const api = axios.create({
     baseURL: "http://localhost:8080",
 });
 
-const loginUser = (email, password) =>
-  api.post("/oauth/token", { email, password, grant_type, client_id, client_secret });
+async function loginUser(credentials) {
+  return fetch('http://localhost:8080/oauth/token', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
+
+// const loginUser = (email, password) =>
+//   api.post("/oauth/token", { email, password, grant_type, client_id, client_secret });
 
 const registerUser = (name, email, password) => api.post('/user', {name, email, password});
 
