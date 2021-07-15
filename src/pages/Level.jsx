@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Center, Box } from "@chakra-ui/layout";
+import { Accordion, CircularProgress } from "@chakra-ui/react";
+
+import api from "../service/errorApi";
 import { CentralErrorsSideBar } from "../components/CentralErrorsSideBar";
 import Header from "../components/Header";
 import Grafico from "../components/Grafico";
-import { Center } from "@chakra-ui/layout";
-import api from "../service/errorApi";
+import ErrorList from "../components/ErrorList";
+import ErrorLabel from "../components/ErrorLabel";
 
 export default function Level() {
   const [infoLevel, setInfoLevel] = useState([]);
@@ -21,7 +25,8 @@ export default function Level() {
         } else {
           return setWarningLevel(warningLevel.push(item));
         }
-      })
+      });
+      setAllData(response.data.content);
     });
   }, []);
 
@@ -37,6 +42,29 @@ export default function Level() {
           titulo="# de levels/niveis"
         />
       </Center>
+      {
+        // fazer toggle
+        // verificar porque nao esta aparecendo o Accordion!!
+      }
+      <Box>
+        {allData ? (
+          <Accordion allowMultiple>
+            {allData.map(({ level, date, origin, description, log }) => {
+              <ErrorLabel
+                level={level}
+                date={date}
+                origin={origin}
+                description={description}
+                log={log}
+              />;
+            })}
+          </Accordion>
+        ) : (
+          <CircularProgress isIndeterminate color="blue.300" />
+        )}
+
+        {/* <ErrorList response={allData} /> */}
+      </Box>
     </div>
   );
 }
