@@ -9,6 +9,8 @@ import Mysql from '../images/mysqlLogo.svg';
 import ReactLogo from '../images/reactLogo.svg';
 import Chakra from '../images/chakraLogo.svg';
 
+// colocar tecnologias do front!!!
+
 export default function AboutProject() {
   return (
     <div>

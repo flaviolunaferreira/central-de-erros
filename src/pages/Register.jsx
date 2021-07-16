@@ -1,40 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Button,
   Container,
+  Text,
 } from "@chakra-ui/react";
 import { MenuSideBar } from "../components/MenuSideBar";
-import LinkButton from "../components/LinkButton";
+import { useHistory } from "react-router-dom";
+import api from "../service/api";
 
 const Register = () => {
+  const [required, setRequired] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const history = useHistory();
+
+  const handleSubmit = () => {
+    if (userName === "" || email === "" || password === "") {
+      setRequired("Campo obrigatório!");
+    } else {
+      api
+        .registerUser(userName, email, password)
+        .then(() => history.push("login"));
+    }
+  };
+
   return (
     <div>
       <MenuSideBar />
 
       <Container>
         <form>
-          <FormControl id="name">
+          <FormControl id="name" mb={5} isRequired>
             <FormLabel>Nome</FormLabel>
-            <Input type="name" />
+            <Input
+              type="name"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <Text color="red">{required}</Text>
           </FormControl>
 
-          <FormControl id="user">
+          <FormControl id="user" mb={5} isRequired>
             <FormLabel>Usuário</FormLabel>
-            <Input type="user" />
+            <Input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Text color="red">{required}</Text>
           </FormControl>
 
-          <FormControl id="password">
+          <FormControl id="password" mb={5} isRequired>
             <FormLabel>Senha</FormLabel>
-            <Input type="password" />
+            <Input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Text color="red">{required}</Text>
           </FormControl>
 
-          <Button mt={5}>
-            <LinkButton title="Login" route="/login" />
+          <Button mt={5} onClick={() => handleSubmit()}>
+            Submit
           </Button>
         </form>
       </Container>
