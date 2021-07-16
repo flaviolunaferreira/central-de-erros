@@ -5,7 +5,8 @@ import {
   Input,
   Button,
   Container,
-  Text
+  Text,
+  storageKey
 } from "@chakra-ui/react";
 import { MenuSideBar } from '../components/MenuSideBar';
 import LinkButton from '../components/LinkButton';
@@ -13,18 +14,21 @@ import api from '../service/api';
 import { useHistory } from 'react-router-dom';
 
 export default function Login() {
-  const [userName, setUserName] = useState('');
+  const [email, setGetEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
   const history = useHistory();
   
   const handleLogin = () => {
-    if (userName === '' || password === '') {
+    if (email === '' || password === '') {
       setMessage('preencha todos os campos');
     } else {
-      api.loginUser(userName, password).then(()=> 
-      history.push("/centralerrors"))
+      api.loginUser(email, password).then((event)=> {
+          localStorage.setItem("getToken", JSON.stringify(event.data));
+          history.push("/centralerrors")
+        }
+      )
     }
   }
 
@@ -34,8 +38,8 @@ export default function Login() {
       <Container>
         <form>
           <FormControl id="user">
-            <FormLabel>Usuário</FormLabel>
-            <Input type="user" value={userName} onChange={(e)=>setUserName(e.target.value)} />
+            <FormLabel>E-mail</FormLabel>
+            <Input type="email" value={email} onChange={(e)=>setGetEmail(e.target.value)} />
           </FormControl>
 
           <FormControl id="password">

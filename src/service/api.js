@@ -3,25 +3,18 @@ const grant_type = "password";
 const client_id = "api_central_erros";
 const client_secret = "big_secret_123";
 
+async function loginUser(email, password) {
+  const tokenurl = 'http://localhost:8080/oauth/token';
+  var bodyFormData = new FormData();
+  bodyFormData.append('grant_type', grant_type);
+  bodyFormData.append('username', email);
+  bodyFormData.append('password', password);
 
-const api = axios.create({
-    baseURL: "http://localhost:8080",
-});
+  let headers = {
+    headers: {'Authorization' : 'Basic ' + btoa(`${client_id}:${client_secret}`) ,
+    'Content-Type': 'multipart/form-data'}
+  }
+  return axios.post(tokenurl,bodyFormData,headers)
+}
 
-async function loginUser(credentials) {
-  return fetch('http://localhost:8080/oauth/token', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
-
-// const loginUser = (email, password) =>
-//   api.post("/oauth/token", { email, password, grant_type, client_id, client_secret });
-
-const registerUser = (name, email, password) => api.post('/user', {name, email, password});
-
-export default {registerUser, loginUser};
+export default { loginUser };
