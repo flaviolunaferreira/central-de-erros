@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Center, Box } from "@chakra-ui/layout";
-import { Accordion, CircularProgress } from "@chakra-ui/react";
+import {
+  CircularProgress,
+  Tabs,
+  TabList,
+  TabPanels,
+  Tab,
+  TabPanel,
+} from "@chakra-ui/react";
 
 import api from "../service/errorApi";
 import { CentralErrorsSideBar } from "../components/CentralErrorsSideBar";
 import Header from "../components/Header";
 import Grafico from "../components/Grafico";
 import ErrorList from "../components/ErrorList";
-import ErrorLabel from "../components/ErrorLabel";
 
 export default function Level() {
   const [infoLevel, setInfoLevel] = useState([]);
@@ -17,6 +23,8 @@ export default function Level() {
 
   useEffect(() => {
     api.getAllErrorLevel().then((response) => {
+      setAllData(response.data.content);
+      console.log(response.data.content);
       response.data.content.map((item) => {
         if (item.level === "INFO") {
           return setInfoLevel(infoLevel.push(item));
@@ -26,7 +34,6 @@ export default function Level() {
           return setWarningLevel(warningLevel.push(item));
         }
       });
-      setAllData(response.data.content);
     });
   }, []);
 
@@ -35,36 +42,34 @@ export default function Level() {
       <Header title="Perfil" />
       <CentralErrorsSideBar />
       <Center>
-        <Grafico
-          firstLevel={infoLevel}
-          secondLevel={warningLevel}
-          thirdLevel={errorLevel}
-          titulo="# de levels/niveis"
-        />
+        <Tabs isFitted variant="enclosed">
+          <TabList mb="1em">
+            <Tab>Grafico</Tab>
+            <Tab>Lista</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <Center>
+                <Grafico
+                  firstLevel={infoLevel}
+                  secondLevel={warningLevel}
+                  thirdLevel={errorLevel}
+                  titulo="# de levels/niveis"
+                />
+              </Center>
+            </TabPanel>
+            <TabPanel>
+              <Box w="1000px">
+                  {allData ? (
+                    <ErrorList response={allData} />
+                  ) : (
+                    <CircularProgress isIndeterminate color="blue.300" />
+                  )}
+              </Box>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Center>
-      {
-        // fazer toggle
-        // verificar porque nao esta aparecendo o Accordion!!
-      }
-      <Box>
-        {allData ? (
-          <Accordion allowMultiple>
-            {allData.map(({ level, date, origin, description, log }) => {
-              <ErrorLabel
-                level={level}
-                date={date}
-                origin={origin}
-                description={description}
-                log={log}
-              />;
-            })}
-          </Accordion>
-        ) : (
-          <CircularProgress isIndeterminate color="blue.300" />
-        )}
-
-        {/* <ErrorList response={allData} /> */}
-      </Box>
     </div>
   );
 }
