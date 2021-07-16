@@ -6,7 +6,6 @@ export { default as Login } from "./Login";
 export { default as Register } from "./Register";
 export { default as CentralErrors } from "./CentralErrors";
 export { default as SearchDate } from "./SearchDate";
-export { default as Type } from "./Type";
 export { default as Origin } from "./Origin";
 export { default as Level } from "./Level";
 export { default as Description } from "./Description";

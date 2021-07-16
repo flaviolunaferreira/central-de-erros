@@ -31,7 +31,6 @@ function App() {
 
           <Route path="/centralerrors" component={CentralErrors} />
           <Route path="/date" component={SearchDate} />
-          <Route path="/type" component={Type} />
           <Route path="/origin" component={Origin} />
           <Route path="/level" component={Level} />
           <Route path="/description" component={Description} />

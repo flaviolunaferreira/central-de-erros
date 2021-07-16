@@ -35,7 +35,6 @@ export const CentralErrorsSideBar = () => {
 
           <DrawerBody>
             <LinkButton title="Data" route="/date" onClose={onClose} />
-            <LinkButton title="Tipo" route="/type" onClose={onClose} />
             <LinkButton title="Origem" route="/origin" onClose={onClose} />
             <LinkButton title="Nível" route="/level" onClose={onClose} />
             <LinkButton title="Descrição" route="/description" onClose={onClose} />
