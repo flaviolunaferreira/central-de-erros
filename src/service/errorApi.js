@@ -11,4 +11,7 @@ const api = axios.create({
 
 const getAllErrorLevel = () => api.get("api/0/50");
 
-export default { getAllErrorLevel };
+const getErrorBySubject = (subject, value) =>
+  api.get(`/api/filter/0/20?${subject}=${value}`);
+
+export default { getAllErrorLevel, getErrorBySubject };
