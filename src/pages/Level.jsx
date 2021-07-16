@@ -24,7 +24,6 @@ export default function Level() {
   useEffect(() => {
     api.getAllErrorLevel().then((response) => {
       setAllData(response.data.content);
-      console.log(response.data.content);
       response.data.content.map((item) => {
         if (item.level === "INFO") {
           return setInfoLevel(infoLevel.push(item));
