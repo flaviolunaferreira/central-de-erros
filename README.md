@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Projeto Central de Erros
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+ <a href="#objetivo">Objetivo</a> •
+ <a href="#status">Status</a> • 
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#instalação">Instalação</a> • 
+ <a href="#autores">Autores</a>
+</p>
 
-## Available Scripts
+## Descrição
 
-In the project directory, you can run:
+Front-end do projeto de conclusão da aceleração em Java -
+disponivel em: [Aceleraçãocodenation](https://github.com/flaviolunaferreira/AceleracaoCodenation)
 
-### `yarn start`
+## Objetivo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Consumir os dados de erros enviados pela Api apresentando-os em forma de graficos e listagem.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Status
 
-### `yarn test`
+    🚧  Em construção...  🚧
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Instalação
 
-### `yarn build`
+Clone o projeto
+```bash
+$ git clone https://github.com/flaviolunaferreira/central-de-erros.git
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Acesse a pasta onde clonou o projeto
+```bash
+$ cd /pasta-de-destino
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Instale as dependências
+```bash
+$ npm install
+```
+ou
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+$ yarn install
+```
 
-### `yarn eject`
+Inicie a aplic  ação
+```bash
+$ npm start
+```
+ou
+```bash
+$ yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Tecnologias
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [Javascript](https://www.javascript.com/)
+- [React](https://pt-br.reactjs.org/)
+- [Axios](https://axios-http.com/)
+- [Chakra-ui](https://chakra-ui.com/)
+- [chart-js](https://www.chartjs.org/)
+- [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Autores
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<table>
+<tr>
+<td align="center">
+<a href="https://github.com/DanielePerse">
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/66958813?v=4" width="100px;" alt=""/><br />
+<a href="https://www.linkedin.com/in/daniele-perse">
+<img style="height: 20px" alt="LinkedIn" src="https://img.shields.io/badge/Daniele Perse-0077B5?logo=LinkedIn&logoColor=white&style=for-the-badge" />
+</a>
+</td>
+<td align="center">
+<a href="https://github.com/flaviolunaferreira">
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/40308391?v=4" width="100px;" alt=""/><br />
+</a>
+<a href="https://www.linkedin.com/in/flavio-luna-ferreira-9b4812165/">
+<img style="height: 20px" alt="LinkedIn" src="https://img.shields.io/badge/theCoyote-0077B5?logo=LinkedIn&logoColor=white&style=for-the-badge" />
+</a>
+</td>
+<td align="center">
+<a href="https://github.com/Darthurmoura">
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/54224755?v=4" width="100px;" alt=""/><br />
+</a>
+<a href="https://www.linkedin.com/in/darthurmoura/">
+<img style="height: 20px" alt="LinkedIn" src="https://img.shields.io/badge/Daniel Moura-0077B5?logo=LinkedIn&logoColor=white&style=for-the-badge" />
+</a>
+</td>
+<td align="center">
+<a href="https://github.com/josiasviveiro">
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/62304302?v=4" width="100px;" alt=""/><br />
+</a>
+<a href="https://www.linkedin.com/in/josias-danny-de-viveiro">
+<img style="height: 20px" alt="LinkedIn" src="https://img.shields.io/badge/Josias Viveiro-0077B5?logo=LinkedIn&logoColor=white&style=for-the-badge" />
+</a>
+</td>
+<td align="center">
+<a href="https://github.com/JorgeHSOsiro">
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/34973260?v=4" width="100px;" alt=""/><br />
+</a>
+<a href="https://www.linkedin.com/in/jorge-osiro/">
+<img style="height: 20px" alt="LinkedIn" src="https://img.shields.io/badge/Jorge Osiro-0077B5?logo=LinkedIn&logoColor=white&style=for-the-badge" />
+</a>
+</td>
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+</tr>
+</table>
