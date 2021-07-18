@@ -11,7 +11,7 @@ import {
   Select,
   Button,
 } from "@chakra-ui/react";
-import { Center, Box } from "@chakra-ui/layout";
+import { Center, Box, Flex } from "@chakra-ui/layout";
 
 import { CentralErrorsSideBar } from "../components/CentralErrorsSideBar";
 import Header from "../components/Header";
@@ -30,9 +30,10 @@ export default function Custom() {
   const [date, setDate] = useState("");
 
   useEffect(() => {
-    allData && setInfoLevel([]);
-    setWarningLevel([]);
-    setErrorLevel([]);
+    setInfoLevel(new Array());
+    setWarningLevel(new Array());
+    setErrorLevel(new Array());
+
     allData.map((item) => {
       if (item.level === "INFO") {
         return setInfoLevel(infoLevel.push(item));
@@ -53,69 +54,83 @@ export default function Custom() {
   return (
     <div>
       <Header title="Perfil" />
-      <CentralErrorsSideBar />
-      <Box>
-        <FormLabel>Level</FormLabel>
-        <Select
-          placeholder="Selecione um nivel"
-          onChange={(e) => setLevel(e.target.value)}
-        >
-          <option value="INFO">INFO</option>
-          <option value="WARNING">WARNING</option>
-          <option value="ERROR">ERROR</option>
-        </Select>
-        <FormLabel>Descrição</FormLabel>
-        <Input
-          type="text"
-          placeholder="descrição"
-          value={desc}
-          onChange={(e) => setDesc(e.target.value)}
-        />
-        <FormLabel>Origem</FormLabel>
-        <Input
-          type="text"
-          placeholder="origem"
-          value={origin}
-          onChange={(e) => setOrigin(e.target.value)}
-        />
-        <FormLabel>Data</FormLabel>
-        <Input
-          type="text"
-          placeholder="2021-10-30"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-        />
-        <Button onClick={() => handleRequisition()}> Send</Button>
+      <Box ml={6} mt={2}>
+        <CentralErrorsSideBar />
       </Box>
-      <Center>
-        <Tabs isFitted variant="enclosed">
-          <TabList mb="1em">
-            <Tab>Grafico</Tab>
-            <Tab>Lista</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <Center>
-                <Grafico
-                  firstLevel={infoLevel}
-                  secondLevel={warningLevel}
-                  thirdLevel={errorLevel}
-                  titulo="# de levels/niveis"
-                />
-              </Center>
-            </TabPanel>
-            <TabPanel>
-              <Box w="1000px">
-                {allData ? (
-                  <ErrorList response={allData} />
-                ) : (
-                  <CircularProgress isIndeterminate color="blue.300" />
-                )}
-              </Box>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </Center>
+      <Box>
+        <Flex>
+          <Box ml={6} mt={2}>
+            <FormLabel>Level</FormLabel>
+            <Select
+              w="300px"
+              placeholder="Selecione um nivel"
+              onChange={(e) => setLevel(e.target.value)}
+            >
+              <option value="INFO">INFO</option>
+              <option value="WARNING">WARNING</option>
+              <option value="ERROR">ERROR</option>
+            </Select>
+            <FormLabel>Descrição</FormLabel>
+            <Input
+              w="300px"
+              type="text"
+              placeholder="descrição"
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+            />
+            <FormLabel>Origem</FormLabel>
+            <Input
+              w="300px"
+              type="text"
+              placeholder="origem"
+              value={origin}
+              onChange={(e) => setOrigin(e.target.value)}
+            />
+            <FormLabel>Data</FormLabel>
+            <Input
+              w="300px"
+              type="text"
+              placeholder="2021-10-30"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <Box>
+              <Button onClick={() => handleRequisition()}> Send</Button>
+            </Box>
+          </Box>
+          <Box ml={20}>
+            <Center>
+              <Tabs isFitted variant="enclosed">
+                <TabList mb="1em">
+                  <Tab>Grafico</Tab>
+                  <Tab>Lista</Tab>
+                </TabList>
+                <TabPanels>
+                  <TabPanel>
+                    <Center>
+                      <Grafico
+                        firstLevel={infoLevel}
+                        secondLevel={warningLevel}
+                        thirdLevel={errorLevel}
+                        titulo="# de levels/niveis"
+                      />
+                    </Center>
+                  </TabPanel>
+                  <TabPanel>
+                    <Box w="1000px">
+                      {allData ? (
+                        <ErrorList response={allData} />
+                      ) : (
+                        <CircularProgress isIndeterminate color="blue.300" />
+                      )}
+                    </Box>
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
+            </Center>
+          </Box>
+        </Flex>
+      </Box>
     </div>
   );
 }

@@ -23,6 +23,7 @@ export default function Level() {
 
   useEffect(() => {
     api.getAllErrorLevel().then((response) => {
+      console.log(response.data.content);
       setAllData(response.data.content);
       response.data.content.map((item) => {
         if (item.level === "INFO") {
@@ -39,7 +40,9 @@ export default function Level() {
   return (
     <div>
       <Header title="Perfil" />
-      <CentralErrorsSideBar />
+      <Box ml={6} mt={2}>
+        <CentralErrorsSideBar />
+      </Box>
       <Center>
         <Tabs isFitted variant="enclosed">
           <TabList mb="1em">

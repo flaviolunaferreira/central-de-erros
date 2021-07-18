@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const myToken = JSON.parse(localStorage.getItem("getToken"));
+console.log(myToken.access_token);
 
 const api = axios.create({
   baseURL: "http://localhost:8080",
@@ -14,7 +15,9 @@ const getAllErrorLevel = () => api.get("api/0/50");
 const getErrorBySubject = (subject, value) =>
   api.get(`/api/filter/0/20?${subject}=${value}`);
 
-  const getErrorByCustomSrc = (level, description, origin, date) =>
-  api.get(`/api/filter/0/20?level=${level}&description=${description}&origin=${origin}&date=${date}`);
+const getErrorByCustomSrc = (level, description, origin, date) =>
+  api.get(
+    `/api/filter/0/20?level=${level}&description=${description}&origin=${origin}&date=${date}`
+  );
 
 export default { getAllErrorLevel, getErrorBySubject, getErrorByCustomSrc };

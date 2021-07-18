@@ -25,7 +25,7 @@ const CommentsCard = ({ myImage, text }) => {
             <Box
               alignSelf="center"
               borderRadius="3xl"
-              bg="#ED1941"
+              bg="#0C9FA6"
               mt={10}
               ml={5}
               boxShadow= "5px 5px 5px black"
@@ -33,7 +33,7 @@ const CommentsCard = ({ myImage, text }) => {
               <Text
                 width="3xl"
                 padding="10"
-                color="white"
+                color="black"
                 fontFamily="Montserrat"
                 fontSize={20}
                 overflow="hidden"

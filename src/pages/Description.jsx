@@ -7,7 +7,8 @@ import {
   Tab,
   TabPanel,
   FormLabel,
-  Input
+  Input,
+  Button,
 } from "@chakra-ui/react";
 import { Center, Box } from "@chakra-ui/layout";
 
@@ -22,40 +23,48 @@ export default function Description() {
   const [warningLevel, setWarningLevel] = useState([]);
   const [errorLevel, setErrorLevel] = useState([]);
   const [allData, setAllData] = useState([]);
-  const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
-  const [desc, setDesc] = useState('CPF');
+  const [desc, setDesc] = useState("CPF");
 
   useEffect(() => {
-    api.getErrorBySubject('description',desc).then((response) => {
-      setAllData(response.data.content);
-      console.log(response);
-      response.data.content.map((item) => {
-        if (item.level === "INFO") {
-          return setInfoLevel(infoLevel.push(item));
-        } else if (item.level === "ERROR") {
-          return setErrorLevel(errorLevel.push(item));
-        } else {
-          return setWarningLevel(warningLevel.push(item));
-        }
-      });
-    });
-  }, []);
+    setInfoLevel(new Array());
+    setWarningLevel(new Array());
+    setErrorLevel(new Array());
 
+    allData.map((item) => {
+      if (item.level === "INFO") {
+        return setInfoLevel(infoLevel.push(item));
+      } else if (item.level === "ERROR") {
+        return setErrorLevel(errorLevel.push(item));
+      } else {
+        return setWarningLevel(warningLevel.push(item));
+      }
+    });
+  }, [allData]);
+
+  const handleRequisition = async () => {
+    api.getErrorBySubject("description", desc).then((response) => {
+      setAllData(response.data.content);
+    });
+  };
 
   return (
     <div>
       <Header title="Perfil" />
-      <CentralErrorsSideBar />
-      <Box>
-      <FormLabel>Filtro</FormLabel>
-            <Input
-              type="text"
-              placeholder="2021-10-30"
-              value={desc}
-              onChange={(e) => setDesc(e.target.value)}
-            />
+      <Box ml={6} mt={2}>
+        <CentralErrorsSideBar />
       </Box>
+      <Center>
+        <Box w="1000px">
+          <FormLabel>Filtro</FormLabel>
+          <Input
+            type="text"
+            placeholder="cpf"
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+          <Button onClick={() => handleRequisition()} mb={5}>Send</Button>
+        </Box>
+      </Center>
       <Center>
         <Tabs isFitted variant="enclosed">
           <TabList mb="1em">
