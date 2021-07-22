@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -7,11 +7,12 @@ import {
   AccordionIcon,
   Box
 } from "@chakra-ui/react";
+import InfoBox from '../components/InfoBox';
 
 export default function ErrorList({ response }) {
   return (
     <Accordion allowMultiple>
-      {response.map(({ level, date, origin, description, log }) => (
+      {response.map(({ id, level, date, origin, description, log }) => (
         <AccordionItem>
           <h2>
             <AccordionButton>
@@ -22,8 +23,9 @@ export default function ErrorList({ response }) {
             </AccordionButton>
           </h2>
           <AccordionPanel pb={4}>
-            <Box>Descrição:{description}</Box>
-            <Box>Log:{log}</Box>
+            <InfoBox identity={id} />
+            {/* <Box>Descrição:{description}</Box>
+            <Box>Log:{log}</Box> */}
           </AccordionPanel>
         </AccordionItem>
       ))}
