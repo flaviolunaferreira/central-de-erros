@@ -17,28 +17,20 @@ import Header from "../components/Header";
 import Grafico from "../components/Grafico";
 import ErrorList from "../components/ErrorList";
 import api from "../service/errorApi";
+import { filterError } from "../util/filterError";
 
 export default function Origin() {
   const [infoLevel, setInfoLevel] = useState([]);
   const [warningLevel, setWarningLevel] = useState([]);
   const [errorLevel, setErrorLevel] = useState([]);
   const [allData, setAllData] = useState([]);
-  const [origin, setOrigin] = useState("Gordinho");
+  const [origin, setOrigin] = useState("");
 
   useEffect(() => {
-    setInfoLevel(new Array());
-    setWarningLevel(new Array());
-    setErrorLevel(new Array());
-
-    allData.map((item) => {
-      if (item.level === "INFO") {
-        return setInfoLevel(infoLevel.push(item));
-      } else if (item.level === "ERROR") {
-        return setErrorLevel(errorLevel.push(item));
-      } else {
-        return setWarningLevel(warningLevel.push(item));
-      }
-    });
+    setInfoLevel(0)
+    setErrorLevel(0)
+    setWarningLevel(0)
+    filterError(allData, setInfoLevel, setErrorLevel, setWarningLevel);
   }, [allData]);
 
   const handleRequisition = async () => {
@@ -58,7 +50,7 @@ export default function Origin() {
           <FormLabel>Filtro por origem</FormLabel>
           <Input
             type="text"
-            placeholder="2021-10-30"
+            placeholder="Ex.: gordinho"
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
           />

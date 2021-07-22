@@ -18,11 +18,12 @@ import Header from "../components/Header";
 import Grafico from "../components/Grafico";
 import ErrorList from "../components/ErrorList";
 import api from "../service/errorApi";
+import { filterError } from "../util/filterError";
 
 export default function Custom() {
-  const [infoLevel, setInfoLevel] = useState([]);
-  const [warningLevel, setWarningLevel] = useState([]);
-  const [errorLevel, setErrorLevel] = useState([]);
+  const [infoLevel, setInfoLevel] = useState(0);
+  const [warningLevel, setWarningLevel] = useState(0);
+  const [errorLevel, setErrorLevel] = useState(0);
   const [allData, setAllData] = useState([]);
   const [level, setLevel] = useState("");
   const [desc, setDesc] = useState("");
@@ -30,19 +31,10 @@ export default function Custom() {
   const [date, setDate] = useState("");
 
   useEffect(() => {
-    setInfoLevel(new Array());
-    setWarningLevel(new Array());
-    setErrorLevel(new Array());
-
-    allData.map((item) => {
-      if (item.level === "INFO") {
-        return setInfoLevel(infoLevel.push(item));
-      } else if (item.level === "ERROR") {
-        return setErrorLevel(errorLevel.push(item));
-      } else {
-        return setWarningLevel(warningLevel.push(item));
-      }
-    });
+    setInfoLevel(0)
+    setErrorLevel(0)
+    setWarningLevel(0)
+    filterError(allData, setInfoLevel, setErrorLevel, setWarningLevel);
   }, [allData]);
 
   const handleRequisition = async () => {
@@ -74,7 +66,7 @@ export default function Custom() {
             <Input
               w="300px"
               type="text"
-              placeholder="descrição"
+              placeholder="Ex.: cpf"
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
             />
@@ -82,7 +74,7 @@ export default function Custom() {
             <Input
               w="300px"
               type="text"
-              placeholder="origem"
+              placeholder="Ex.: gordinho"
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
             />
@@ -90,7 +82,7 @@ export default function Custom() {
             <Input
               w="300px"
               type="text"
-              placeholder="2021-10-30"
+              placeholder="Ex.: 2021-07-09"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />

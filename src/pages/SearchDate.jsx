@@ -16,6 +16,7 @@ import { Center, Box, Flex } from "@chakra-ui/layout";
 import Grafico from "../components/Grafico";
 import ErrorList from "../components/ErrorList";
 import api from "../service/errorApi";
+import { filterError } from "../util/filterError";
 
 export default function SearchDate() {
   const [initialDate, setInitialDate] = useState("");
@@ -25,29 +26,16 @@ export default function SearchDate() {
   const [allData, setAllData] = useState([]);
 
   useEffect(() => {
-    setInfoLevel(new Array());
-    setWarningLevel(new Array());
-    setErrorLevel(new Array());
-
-    allData.map((item) => {
-      if (item.level === "INFO") {
-        console.log("infolevel");
-        console.log(infoLevel);
-        console.log(typeof infoLevel);
-        return setInfoLevel(infoLevel.push(item));
-      } else if (item.level === "ERROR") {
-        return setErrorLevel(errorLevel.push(item));
-      } else {
-        return setWarningLevel(warningLevel.push(item));
-      }
-    });
+    setInfoLevel(0)
+    setErrorLevel(0)
+    setWarningLevel(0)
+    filterError(allData, setInfoLevel, setErrorLevel, setWarningLevel);
   }, [allData]);
 
   const handleDate = () => {
     api.getErrorBySubject("date", initialDate).then((response) => {
       setAllData(response.data.content);
     });
-    console.log(initialDate);
   };
 
   return (
@@ -62,7 +50,7 @@ export default function SearchDate() {
             <FormLabel>Filtro por data</FormLabel>
             <Input
               type="text"
-              placeholder="2021-10-30"
+              placeholder="Ex.: 2021-07-09"
               value={initialDate}
               onChange={(e) => setInitialDate(e.target.value)}
             />
