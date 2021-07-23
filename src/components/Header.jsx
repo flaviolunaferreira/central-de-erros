@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Heading, Center } from "@chakra-ui/react";
+import { Box, Flex, Heading, Center } from "@chakra-ui/react";
 import { MenuSideBar } from "./MenuSideBar";
 
 export default function Header({ title }) {

@@ -31,9 +31,9 @@ export default function Custom() {
   const [date, setDate] = useState("");
 
   useEffect(() => {
-    setInfoLevel(0)
-    setErrorLevel(0)
-    setWarningLevel(0)
+    setInfoLevel(0);
+    setErrorLevel(0);
+    setWarningLevel(0);
     filterError(allData, setInfoLevel, setErrorLevel, setWarningLevel);
   }, [allData]);
 
@@ -46,14 +46,15 @@ export default function Custom() {
   return (
     <div>
       <Header title="Perfil" />
-      <Box ml={6} mt={2}>
+      <Box>
         <CentralErrorsSideBar />
       </Box>
-      <Box>
+      <Box ml={16}>
         <Flex>
-          <Box ml={6} mt={2}>
+          <Box mt={2}>
             <FormLabel>Level</FormLabel>
             <Select
+              mb={4}
               w="300px"
               placeholder="Selecione um nivel"
               onChange={(e) => setLevel(e.target.value)}
@@ -64,6 +65,7 @@ export default function Custom() {
             </Select>
             <FormLabel>Descrição</FormLabel>
             <Input
+              mb={4}
               w="300px"
               type="text"
               placeholder="Ex.: cpf"
@@ -72,6 +74,7 @@ export default function Custom() {
             />
             <FormLabel>Origem</FormLabel>
             <Input
+              mb={4}
               w="300px"
               type="text"
               placeholder="Ex.: gordinho"
@@ -80,17 +83,18 @@ export default function Custom() {
             />
             <FormLabel>Data</FormLabel>
             <Input
+              mb={4}
               w="300px"
               type="text"
               placeholder="Ex.: 2021-07-09"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
-            <Box>
+            <Box mt={6} color="#0C9FA6">
               <Button onClick={() => handleRequisition()}> Send</Button>
             </Box>
           </Box>
-          <Box ml={20}>
+          <Box ml={100}>
             <Center>
               <Tabs isFitted variant="enclosed">
                 <TabList mb="1em">

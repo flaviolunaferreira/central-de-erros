@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   Drawer,
   DrawerBody,
@@ -9,13 +9,22 @@ import {
   DrawerCloseButton,
   Button,
   useDisclosure,
-} from "@chakra-ui/react"
+} from "@chakra-ui/react";
 
 import LinkButton from "./LinkButton";
+import { useHistory } from "react-router-dom";
 
 export const MenuSideBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const history = useHistory();
+
+  const token = localStorage.getItem("getToken");
+
+  const handleLogout = () => {
+    localStorage.removeItem("getToken");
+    history.push('/');
+  }
 
   return (
     <div>
@@ -36,19 +45,46 @@ export const MenuSideBar = () => {
           <DrawerBody>
             <LinkButton title="Home" route="/" onClose={onClose} />
             <LinkButton title="Quem Somos" route="/aboutus" onClose={onClose} />
-            <LinkButton title="Comentários" route="/comments" onClose={onClose} />
-            <LinkButton title="Sobre o Projeto" route="/aboutproject" onClose={onClose} />
+            <LinkButton
+              title="Comentários"
+              route="/comments"
+              onClose={onClose}
+            />
+            <LinkButton
+              title="Sobre o Projeto"
+              route="/aboutproject"
+              onClose={onClose}
+            />
+            {token ? <LinkButton
+              title="Buscar"
+              route="/centralerrors"
+              onClose={onClose}
+            /> : ''}
           </DrawerBody>
 
           <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose} color="#0C9FA6">
-              <LinkButton title="Login" route="/login" onClose={onClose} />
-            </Button>
+            {token ? (
+              <Button
+                variant="outline"
+                mr={3}
+                onClick={() => handleLogout()}
+                color="#0C9FA6"
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                mr={3}
+                onClick={onClose}
+                color="#0C9FA6"
+              >
+                <LinkButton title="Login" route="/login" onClose={onClose} />
+              </Button>
+            )}
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </div>
-  )
-}
-
-
+  );
+};

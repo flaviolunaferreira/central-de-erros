@@ -54,7 +54,7 @@ export default function Origin() {
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
           />
-          <Button onClick={() => handleRequisition()} mb={5}>
+          <Button color="#0C9FA6" onClick={() => handleRequisition()} mb={5}>
             Send
           </Button>
         </Box>
