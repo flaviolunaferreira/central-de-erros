@@ -5,7 +5,7 @@ const myToken = JSON.parse(localStorage.getItem("getToken"));
 const api = axios.create({
   baseURL: "http://localhost:8080",
   headers: {
-    Authorization: "Bearer " + myToken.access_token,
+    Authorization: "Bearer " + myToken,
   },
 });
 
@@ -21,4 +21,6 @@ const getErrorByCustomSrc = (level, description, origin, date) =>
 
 const getErrorById = (id) => api.get(`/api/id/${id}`);
 
-export default { getAllErrorLevel, getErrorBySubject, getErrorByCustomSrc, getErrorById };
+const endPoints = { getAllErrorLevel, getErrorBySubject, getErrorByCustomSrc, getErrorById }
+
+export default endPoints;

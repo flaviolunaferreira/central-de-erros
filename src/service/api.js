@@ -22,4 +22,6 @@ async function loginUser(email, password) {
 const registerUser = (name, email, password) =>
   axios.post("http://localhost:8080/user/", { name, email, password });
 
-export default { loginUser, registerUser };
+const endPoints = { loginUser, registerUser }
+
+export default endPoints;
