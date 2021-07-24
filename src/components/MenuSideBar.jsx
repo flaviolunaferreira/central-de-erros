@@ -61,7 +61,7 @@ export const MenuSideBar = () => {
             {token ? (
               <LinkButton
                 title="Buscar"
-                route="/centralerrors"
+                route="/custom"
                 onClose={onClose}
               />
             ) : (
