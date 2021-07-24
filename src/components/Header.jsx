@@ -5,17 +5,16 @@ import { MenuSideBar } from "./MenuSideBar";
 export default function Header({ title }) {
   return (
     <Box padding={5} bg="black">
-      <Flex justify="flex-start">
-        <Box width="10%">
+      <Flex justify="space-between">
+        <Box>
           <Center>
             <MenuSideBar />
           </Center>
         </Box>
-        <Box width="90%">
-          <Center>
+        <Box>
             <Heading fontWeight="100" fontFamily="Montserrat" color="white">{title}</Heading>
-          </Center>
         </Box>
+        <Box></Box>
       </Flex>
     </Box>
   );
