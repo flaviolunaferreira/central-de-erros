@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Accordion,
   AccordionItem,
@@ -12,7 +12,7 @@ import InfoBox from '../components/InfoBox';
 export default function ErrorList({ response }) {
   return (
     <Accordion allowMultiple>
-      {response.map(({ id, level, date, origin, description, log }) => (
+      {response.map(({ id, level, date, origin }) => (
         <AccordionItem>
           <h2>
             <AccordionButton>
@@ -24,8 +24,6 @@ export default function ErrorList({ response }) {
           </h2>
           <AccordionPanel pb={4}>
             <InfoBox identity={id} />
-            {/* <Box>Descrição:{description}</Box>
-            <Box>Log:{log}</Box> */}
           </AccordionPanel>
         </AccordionItem>
       ))}

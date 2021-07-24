@@ -54,7 +54,7 @@ export default function Description() {
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
           />
-          <Button onClick={() => handleRequisition()} mb={5}>Send</Button>
+          <Button color="#0C9FA6" onClick={() => handleRequisition()} mb={5}>Send</Button>
         </Box>
       </Center>
       <Center>

@@ -8,7 +8,6 @@ import {
   Login,
   CentralErrors,
   SearchDate,
-  Type,
   Origin,
   Level,
   Custom,
