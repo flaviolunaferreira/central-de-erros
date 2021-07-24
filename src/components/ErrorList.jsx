@@ -13,7 +13,7 @@ export default function ErrorList({ response }) {
   return (
     <Accordion allowMultiple>
       {response.map(({ id, level, date, origin }) => (
-        <AccordionItem>
+        <AccordionItem key={id}>
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left">
