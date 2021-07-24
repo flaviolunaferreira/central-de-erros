@@ -24,7 +24,7 @@ export default function Login() {
     } else {
       api.loginUser(email, password).then((event) => {
         localStorage.setItem("getToken", JSON.stringify(event.data));
-        history.push("/centralerrors");
+        history.push("/custom");
       });
     }
   };
