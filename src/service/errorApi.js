@@ -3,7 +3,7 @@ import axios from "axios";
 const myToken = JSON.parse(localStorage.getItem("getToken"));
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://projeto-central-de-erros.herokuapp.com",
   headers: {
     Authorization: "Bearer " + myToken,
   },
