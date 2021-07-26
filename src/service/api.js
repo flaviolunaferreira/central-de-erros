@@ -4,7 +4,7 @@ const client_id = "api_central_erros";
 const client_secret = "big_secret_123";
 
 async function loginUser(email, password) {
-  const tokenurl = "http://localhost:8080/oauth/token";
+  const tokenurl = "https://projeto-central-de-erros.herokuapp.com/oauth/token";
   var bodyFormData = new FormData();
   bodyFormData.append("grant_type", grant_type);
   bodyFormData.append("username", email);
@@ -20,7 +20,7 @@ async function loginUser(email, password) {
 }
 
 const registerUser = (name, email, password) =>
-  axios.post("http://localhost:8080/user/", { name, email, password });
+  axios.post("https://projeto-central-de-erros.herokuapp.com/user/", { name, email, password });
 
 const endPoints = { loginUser, registerUser }
 
