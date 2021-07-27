@@ -1,12 +1,11 @@
 import axios from "axios";
 
 const myToken = JSON.parse(localStorage.getItem("getToken"));
-console.log(myToken.access_token);
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://projeto-central-de-erros.herokuapp.com",
   headers: {
-    Authorization: "Bearer " + myToken.access_token,
+    Authorization: "Bearer " + myToken,
   },
 });
 
@@ -20,4 +19,8 @@ const getErrorByCustomSrc = (level, description, origin, date) =>
     `/api/filter/0/20?level=${level}&description=${description}&origin=${origin}&date=${date}`
   );
 
-export default { getAllErrorLevel, getErrorBySubject, getErrorByCustomSrc };
+const getErrorById = (id) => api.get(`/api/id/${id}`);
+
+const endPoints = { getAllErrorLevel, getErrorBySubject, getErrorByCustomSrc, getErrorById }
+
+export default endPoints;

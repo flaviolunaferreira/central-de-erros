@@ -17,28 +17,20 @@ import Header from "../components/Header";
 import Grafico from "../components/Grafico";
 import ErrorList from "../components/ErrorList";
 import api from "../service/errorApi";
+import { filterError } from "../util/filterError";
 
 export default function Description() {
   const [infoLevel, setInfoLevel] = useState([]);
   const [warningLevel, setWarningLevel] = useState([]);
   const [errorLevel, setErrorLevel] = useState([]);
   const [allData, setAllData] = useState([]);
-  const [desc, setDesc] = useState("CPF");
+  const [desc, setDesc] = useState("");
 
   useEffect(() => {
-    setInfoLevel(new Array());
-    setWarningLevel(new Array());
-    setErrorLevel(new Array());
-
-    allData.map((item) => {
-      if (item.level === "INFO") {
-        return setInfoLevel(infoLevel.push(item));
-      } else if (item.level === "ERROR") {
-        return setErrorLevel(errorLevel.push(item));
-      } else {
-        return setWarningLevel(warningLevel.push(item));
-      }
-    });
+    setInfoLevel(0)
+    setErrorLevel(0)
+    setWarningLevel(0)
+    filterError(allData, setInfoLevel, setErrorLevel, setWarningLevel);
   }, [allData]);
 
   const handleRequisition = async () => {
@@ -58,11 +50,11 @@ export default function Description() {
           <FormLabel>Filtro</FormLabel>
           <Input
             type="text"
-            placeholder="cpf"
+            placeholder="Ex.: cpf"
             value={desc}
             onChange={(e) => setDesc(e.target.value)}
           />
-          <Button onClick={() => handleRequisition()} mb={5}>Send</Button>
+          <Button color="#0C9FA6" onClick={() => handleRequisition()} mb={5}>Send</Button>
         </Box>
       </Center>
       <Center>

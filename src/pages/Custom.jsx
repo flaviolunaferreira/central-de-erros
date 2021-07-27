@@ -18,11 +18,12 @@ import Header from "../components/Header";
 import Grafico from "../components/Grafico";
 import ErrorList from "../components/ErrorList";
 import api from "../service/errorApi";
+import { filterError } from "../util/filterError";
 
 export default function Custom() {
-  const [infoLevel, setInfoLevel] = useState([]);
-  const [warningLevel, setWarningLevel] = useState([]);
-  const [errorLevel, setErrorLevel] = useState([]);
+  const [infoLevel, setInfoLevel] = useState(0);
+  const [warningLevel, setWarningLevel] = useState(0);
+  const [errorLevel, setErrorLevel] = useState(0);
   const [allData, setAllData] = useState([]);
   const [level, setLevel] = useState("");
   const [desc, setDesc] = useState("");
@@ -30,19 +31,10 @@ export default function Custom() {
   const [date, setDate] = useState("");
 
   useEffect(() => {
-    setInfoLevel(new Array());
-    setWarningLevel(new Array());
-    setErrorLevel(new Array());
-
-    allData.map((item) => {
-      if (item.level === "INFO") {
-        return setInfoLevel(infoLevel.push(item));
-      } else if (item.level === "ERROR") {
-        return setErrorLevel(errorLevel.push(item));
-      } else {
-        return setWarningLevel(warningLevel.push(item));
-      }
-    });
+    setInfoLevel(0);
+    setErrorLevel(0);
+    setWarningLevel(0);
+    filterError(allData, setInfoLevel, setErrorLevel, setWarningLevel);
   }, [allData]);
 
   const handleRequisition = async () => {
@@ -54,14 +46,15 @@ export default function Custom() {
   return (
     <div>
       <Header title="Perfil" />
-      <Box ml={6} mt={2}>
+      <Box>
         <CentralErrorsSideBar />
       </Box>
-      <Box>
+      <Box ml={16}>
         <Flex>
-          <Box ml={6} mt={2}>
+          <Box mt={2}>
             <FormLabel>Level</FormLabel>
             <Select
+              mb={4}
               w="300px"
               placeholder="Selecione um nivel"
               onChange={(e) => setLevel(e.target.value)}
@@ -72,33 +65,36 @@ export default function Custom() {
             </Select>
             <FormLabel>Descrição</FormLabel>
             <Input
+              mb={4}
               w="300px"
               type="text"
-              placeholder="descrição"
+              placeholder="Ex.: cpf"
               value={desc}
               onChange={(e) => setDesc(e.target.value)}
             />
             <FormLabel>Origem</FormLabel>
             <Input
+              mb={4}
               w="300px"
               type="text"
-              placeholder="origem"
+              placeholder="Ex.: gordinho"
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
             />
             <FormLabel>Data</FormLabel>
             <Input
+              mb={4}
               w="300px"
               type="text"
-              placeholder="2021-10-30"
+              placeholder="Ex.: 2021-07-09"
               value={date}
               onChange={(e) => setDate(e.target.value)}
             />
-            <Box>
+            <Box mt={6} color="#0C9FA6">
               <Button onClick={() => handleRequisition()}> Send</Button>
             </Box>
           </Box>
-          <Box ml={20}>
+          <Box ml={100}>
             <Center>
               <Tabs isFitted variant="enclosed">
                 <TabList mb="1em">
